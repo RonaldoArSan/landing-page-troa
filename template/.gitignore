@@ -1,0 +1,5 @@
+.vercel
+.next
+public/studio
+node_modules
+.env

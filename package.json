@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "sanity-template-nextjs-landing-pages",
+  "scripts": {
+    "dev": "cd template && npm start",
+    "export": "cd build/studio && sanity dataset export landing-pages ../../data/production.tar.gz",
+    "test": "npm run build && cd build && npm install && npm run build"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "sanity-template": "^2.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "([ -z \"$SKIP_HOOK\" ] && sanity-template lockfiles && git add '*package-lock.json*' && git diff --quiet && SKIP_HOOK=1 git commit -m 'Generate lockfiles') && echo 'Committed lockfiles' || echo ''"
+    }
+  }
+}
